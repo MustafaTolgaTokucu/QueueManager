@@ -17,13 +17,19 @@ Queue Descriptor
 ----------------
 Each queue is represented by a `Q` struct (8 bytes):
 
- struct Q {
+struct Q {
     uint16_t head_segment;
+    
     uint16_t tail_segment; 
+    
     uint8_t  head_offset;
+    
     uint8_t  tail_offset; 
+    
     uint8_t  in_use;
+    
     uint8_t  pad;
+    
  };
 
 - Max Queues: 64
