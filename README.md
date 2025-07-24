@@ -17,20 +17,14 @@ Queue Descriptor
 ----------------
 Each queue is represented by a `Q` struct (8 bytes):
 
-struct Q {
-    uint16_t head_segment;
-    
-    uint16_t tail_segment; 
-    
-    uint8_t  head_offset;
-    
-    uint8_t  tail_offset; 
-    
-    uint8_t  in_use;
-    
-    uint8_t  pad;
-    
- };
+    struct Q {
+        uint16_t head_segment;    
+        uint16_t tail_segment;    
+        uint8_t  head_offset;   
+        uint8_t  tail_offset;   
+        uint8_t  in_use;
+        uint8_t  pad;
+    };
 
 - Max Queues: 64
 
@@ -40,10 +34,10 @@ Data is stored in fixed-size segments, each 16 bytes:
 - 14 bytes of actual payload
 - 2 bytes for the `next` pointer (linked list behavior)
 
-struct Segment {
-    uint16_t next;             // Next segment index (or INVALID_INDEX)
-    unsigned char data[14];    // Actual byte storage
-};
+      struct Segment {
+        uint16_t next;
+        unsigned char data[14];
+      };
 
 Segment Count: 95 segments, allowing ~1.3 KB of FIFO storage across all queues.
 
@@ -87,10 +81,10 @@ Error Handling
 
 Example
 -------
-Q* q0 = create_queue();
-enqueue_byte(q0, 42);
-printf("%d\n", dequeue_byte(q0)); // Output: 42
-destroy_queue(q0);
+    Q* q0 = create_queue();
+    enqueue_byte(q0, 42);
+    printf("%d\n", dequeue_byte(q0));
+    destroy_queue(q0);
 
 File
 ----
