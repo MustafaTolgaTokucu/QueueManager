@@ -16,6 +16,7 @@ Segment Pool (~1520 B)       | // 95 segments × 16 bytes each
 Queue Descriptor
 ----------------
 Each queue is represented by a `Q` struct (8 bytes):
+
 struct Q {
     uint16_t head_segment;   // Index of first segment
     uint16_t tail_segment;   // Index of last segment
@@ -24,6 +25,7 @@ struct Q {
     uint8_t  in_use;         // Allocation flag
     uint8_t  pad;            // Padding (for 8-byte alignment)
 };
+
 - Max Queues: 64
 
 Segment-Based Data Storage
